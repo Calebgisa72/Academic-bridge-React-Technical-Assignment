@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: "class",
   prefix: "",
   theme: {
     container: {
@@ -11,19 +12,53 @@ export default {
       },
     },
     extend: {
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      colors: {
+        background: {
+          DEFAULT: "#f1f5f5",
+          dark: "#2e3634",
+        },
+        foreground: {
+          DEFAULT: "#111111",
+          dark: "#fdffff",
+        },
+        primary: "#6168f3",
+        secondary: {
+          DEFAULT: "#faf1f1",
+          dark: "#173558",
+        },
+        completed: {
+          DEFAULT: "#66ec73",
+          back: "#cfffd4",
+        },
+        toDo: {
+          DEFAULT: "#ecad66",
+          back: "#f7dab8",
+        },
+        inProgress: {
+          DEFAULT: "#74b7ef",
+          back: "#d9ebfa",
+        },
+        muted: "#ffffff",
+        description: "#a7a7a7",
+        card: {
+          DEFAULT: "#fffefe",
+          dark: "#1b1b1b",
+        },
+      },
+      fontFamily: {
+        poppinskjesfdb: ["Poppins", "sans-serif"],
+      },
+      boxShadow: {
+        custom: "0px 3px 3px rgba(39, 39, 39, 0.6)",
       },
       animation: {
-        bounceLong: 'bounce 3s infinite',
+        bounceLong: "bounce 3s infinite",
       },
       keyframes: {
         bounce: {
-          '0%, 20%, 50%, 80%, 100%': { transform: 'translateY(-25%)' },
-          '40%': { transform: 'translateY(0)' },
-          '60%': { transform: 'translateY(-10%)' },
+          "0%, 20%, 50%, 80%, 100%": { transform: "translateY(-25%)" },
+          "40%": { transform: "translateY(0)" },
+          "60%": { transform: "translateY(-10%)" },
         },
         "accordion-down": {
           from: { height: "0" },
