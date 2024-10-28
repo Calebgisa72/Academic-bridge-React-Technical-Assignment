@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import PageTitle from "../Pages/PageTitle";
 import NotFound from "./NotFound";
 import ComingSoon from "../Pages/ComingSoon";
+import Todo from "../Pages/Todo";
 
 const Router = () => {
   return (
@@ -11,8 +12,8 @@ const Router = () => {
         path="/"
         element={
           <>
-            <PageTitle title="Task" />
-            <ComingSoon page="Home" />
+            <PageTitle title="Todo" />
+            <Todo />
           </>
         }
       ></Route>

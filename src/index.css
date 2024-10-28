@@ -24,14 +24,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .custom-scrollbar::-webkit-scrollbar {
   width: 2px;
 }
@@ -42,7 +34,7 @@ button:focus-visible {
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-track {
-  background: #838383;
+  background: #968f85;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {

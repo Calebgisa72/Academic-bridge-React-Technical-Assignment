@@ -5,25 +5,25 @@ import avatar2 from "../assets/Avatar2.png";
 import avatar3 from "../assets/Avatar3.png";
 import avatar4 from "../assets/Avatar4.png";
 import avatar5 from "../assets/Avatar5.png";
+import avatar6 from "../assets/Avatar2.png";
 import { CiStar } from "react-icons/ci";
 import { IoIosSend } from "react-icons/io";
 import React, { useEffect, useRef } from "react";
 import ReacivedMessage from "./ReacivedMessage";
 import SentMessage from "./SentMessage";
 
-const allProfiles = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar2];
+const allProfiles = [avatar1, avatar2, avatar3, avatar4, avatar5];
 
 const RightSidebar = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll to the bottom when the component mounts or when messages change
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
     }
   }, []);
   return (
-    <div className="flex flex-col w-[400px] bg-card dark:bg-card-dark text-foreground dark:text-foreground-dark p-5 gap-5">
+    <div className="flex flex-col w-[90%] sm:w-[325px] bg-card dark:bg-card-dark text-foreground dark:text-foreground-dark p-5 gap-5">
       <div className="flex justify-between">
         <h3 className="font-medium">Project Overview</h3>
         <p className="text-description text-sm cursor-pointer">See all</p>
@@ -82,7 +82,7 @@ const RightSidebar = () => {
         </div>
         <div
           ref={messagesEndRef}
-          className="h-[300px] w-full flex flex-col gap-2 rounded-[8px] overflow-y-auto custom-scrollbar pr-1"
+          className="h-[340px] w-full flex flex-col gap-3 rounded-[8px] overflow-y-auto custom-scrollbar pr-1"
         >
           <ReacivedMessage
             profileImage={avatar3}
