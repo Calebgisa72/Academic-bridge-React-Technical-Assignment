@@ -1,8 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-// import themeReducer from "./themeReducer";
+import todoReducer from "./todoReducer";
+import appReducer from "./appReducer";
 
 const rootReducer = combineReducers({
-//   theme: themeReducer,
+  todo: todoReducer,
+  app: appReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;

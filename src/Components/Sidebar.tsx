@@ -14,14 +14,21 @@ import avatar3 from "../assets/Avatar3.png";
 import React from "react";
 import AvatarMaker from "./AvatarMaker";
 import { Link } from "react-router-dom";
+import { setviewMenuBar } from "../Redux/Reducers/appReducer";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const handleCloseSidebar = () => {
+    dispatch(setviewMenuBar(false));
+  };
   return (
-    <div className="flex flex-col items-center p-5 border-r-[1px] h-screen border-[#dbdbdb] bg-card dark:bg-card-dark">
+    <div className="flex flex-col items-center p-5 border-r-[1px] h-full border-[#dbdbdb] bg-card dark:bg-card-dark overflow-y-auto custom-scrollbar">
       <i className="fa-solid fa-train text-[22px] text-foreground dark:text-foreground-dark"></i>
       <div className="flex flex-col gap-4 items-center my-9">
         <Link to={"/home"}>
           <House
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
@@ -29,6 +36,7 @@ const Sidebar = () => {
         <Link to={"/messages"}>
           <div className="relative">
             <Mail
+              onClick={handleCloseSidebar}
               className="text-description w-[21px] cursor-pointer"
               strokeWidth={1.7}
             />
@@ -37,18 +45,21 @@ const Sidebar = () => {
         </Link>
         <Link to={"/notes"}>
           <FileText
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
         </Link>
         <Link to={"/"}>
           <FolderMinus
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
         </Link>
         <Link to={"/performance"}>
           <SquarePercent
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
@@ -58,7 +69,7 @@ const Sidebar = () => {
         <AvatarMaker imgSrc={avatar1} active={true} />
         <AvatarMaker imgSrc={avatar2} active={true} />
         <AvatarMaker imgSrc={avatar3} />
-        <div className="w-[30px] h-[30px] rounded-full border-[2px] border-dashed border-[#dbdbdb] flex items-center justify-center text-[16px] cursor-pointer">
+        <div className="w-[30px] h-[30px] rounded-full border-[2px] border-dashed border-[#dbdbdb] flex items-center justify-center cursor-pointer">
           <Plus
             className="text-description w-[17px] cursor-pointer"
             strokeWidth={1.7}
@@ -68,12 +79,14 @@ const Sidebar = () => {
       <div className="mt-auto flex flex-col gap-4">
         <Link to={"/settings"}>
           <Settings
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={2}
           />
         </Link>
         <Link to={"/profile"}>
           <User
+            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={2}
           />

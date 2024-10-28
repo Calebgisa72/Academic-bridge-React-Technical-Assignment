@@ -15,7 +15,7 @@ export default {
       colors: {
         background: {
           DEFAULT: "#f1f5f5",
-          dark: "#2e3634",
+          dark: "#2c2c2c",
         },
         foreground: {
           DEFAULT: "#111111",
@@ -27,19 +27,19 @@ export default {
           dark: "#173558",
         },
         completed: {
-          DEFAULT: "#66ec73",
-          back: "#cfffd4",
+          DEFAULT: "#1cac70",
+          back: "#dcefe7",
         },
         toDo: {
-          DEFAULT: "#ecad66",
-          back: "#f7dab8",
+          DEFAULT: "#d37d1a",
+          back: "#f0ddc8",
         },
         inProgress: {
-          DEFAULT: "#74b7ef",
-          back: "#d9ebfa",
+          DEFAULT: "#2087db",
+          back: "#d8e6f1",
         },
         muted: "#ffffff",
-        description: "#a7a7a7",
+        description: "#8e8e8e",
         card: {
           DEFAULT: "#fffefe",
           dark: "#1b1b1b",
@@ -72,7 +72,7 @@ export default {
       screens: {
         exs: "250px",
         xsm: "470px",
-        smd: "665px",
+        sm: "600px",
         xmd: "850px",
         xlg: "1210px",
       },

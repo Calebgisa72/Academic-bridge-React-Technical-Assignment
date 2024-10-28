@@ -1,8 +1,23 @@
 import React, { useEffect, useState } from "react";
 import searchIcon from "/search.svg";
 import { Bell, Moon, Sun } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../Redux/store";
+import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import {
+  setRightSidebar,
+  setviewMenuBar,
+  setSearch,
+} from "../Redux/Reducers/appReducer";
+import { IoMenu } from "react-icons/io5";
+import { RiSearch2Line } from "react-icons/ri";
 
 const Navbar = () => {
+  const { rightSidebar, viewMenuBar } = useSelector(
+    (state: RootState) => state.app
+  );
+  const [serchItem, setSerchItem] = useState<string>("");
+  const dispatch = useDispatch();
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem("theme");
     return storedTheme
@@ -31,21 +46,43 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex py-[14px] px-5 bg-card dark:bg-card-dark">
+    <div className="flex py-[14px] gap-2 px-5 bg-card dark:bg-card-dark">
+      {window.innerWidth < 600 && (
+        <div
+          onClick={() => {
+            dispatch(setviewMenuBar(!viewMenuBar));
+          }}
+          className="sm:py-1 py-[2px] px-1 sm:px-2 cursor-pointer flex items-center bg-background dark:bg-background-dark rounded-[8px]"
+        >
+          <IoMenu size={25} className="text-description" />
+        </div>
+      )}
       <div className="w-[300px] bg-background dark:bg-background-dark h-[36x] flex px-[4px] overflow-hidden rounded-[8px]">
         <input
           type="text"
           placeholder="Search"
-          className="w-[90%] bg-background dark:bg-background-dark text-foreground dark:text-foreground-dark h-full outline-none py-2 pr-[8px]
+          value={serchItem}
+          onChange={(e) => setSerchItem(e.target.value)}
+          className="w-[90%] bg-background dark:bg-background-dark h-full outline-none py-2 pr-[8px]
          pl-[6px]"
         />
-        <img className="w-[20px] cursor-pointer" src={searchIcon} />
+        <div className="h-full flex items-center justify-center">
+          <RiSearch2Line
+            onClick={() => {
+              if (!serchItem.trim()) return;
+              dispatch(setSearch(serchItem));
+              setSerchItem("");
+            }}
+            size={21}
+            className="text-description hover:text-primary cursor-pointer"
+          />
+        </div>
       </div>
 
-      <div className="flex gap-3 ml-auto">
+      <div className="flex gap-2 sm:gap-3 sm:ml-auto">
         <div
           onClick={handleTheme}
-          className="py-1 px-2 flex items-center bg-background dark:bg-background-dark rounded-[8px]"
+          className="sm:py-1 py-[2px] px-1 sm:px-2 flex items-center bg-background dark:bg-background-dark rounded-[8px]"
         >
           {theme === "light" ? (
             <Moon
@@ -59,13 +96,27 @@ const Navbar = () => {
             />
           )}
         </div>
-        <div className="py-1 px-2 flex items-center bg-background dark:bg-background-dark rounded-[8px]">
+        <div className="sm:py-1 py-[2px] px-1 sm:px-2 flex items-center bg-background dark:bg-background-dark rounded-[8px]">
           <div className="relative">
             <Bell
               className="text-description w-[21px] cursor-pointer"
               strokeWidth={1.7}
             />
             <div className="absolute w-2 h-2 rounded-full bg-red-600 top-[1px] right-[1px]"></div>
+          </div>
+        </div>
+        <div className="sm:py-1 py-[2px] px-1 sm:px-2 cursor-pointer flex items-center bg-background dark:bg-background-dark rounded-[8px]">
+          <div
+            title="Project Overview"
+            onClick={() => {
+              dispatch(setRightSidebar(!rightSidebar));
+            }}
+          >
+            {rightSidebar ? (
+              <FaArrowCircleRight size={20} className="text-description" />
+            ) : (
+              <FaArrowCircleLeft size={20} className="text-description" />
+            )}
           </div>
         </div>
       </div>
