@@ -23,7 +23,7 @@ const RightSidebar = () => {
     }
   }, []);
   return (
-    <div className="flex flex-col w-[90%] sm:w-[325px] bg-card dark:bg-card-dark text-foreground dark:text-foreground-dark p-5 gap-5">
+    <div className="flex flex-col w-[90%] sm:w-[325px] h-full bg-card dark:bg-card-dark text-foreground dark:text-foreground-dark p-5 gap-5">
       <div className="flex justify-between">
         <h3 className="font-medium">Project Overview</h3>
         <p className="text-description text-sm cursor-pointer">See all</p>

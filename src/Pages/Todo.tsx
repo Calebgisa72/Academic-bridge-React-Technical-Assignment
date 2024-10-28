@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { DiGitCompare } from "react-icons/di";
 import TodoHeader from "../Components/TodoHeader";
-import { Plus } from "lucide-react";
+import { Loader2, Plus } from "lucide-react";
 import SingleTask, { SingleTaskProps } from "../Components/SingleTask";
 import TodoForm from "../Components/TodoForm";
 import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 import { RootState } from "../Redux/store";
+import { setTodos } from "../Redux/Reducers/todoReducer";
 
 const Todo = () => {
   const [openTodoForm, setOpenTodoForm] = useState(false);
+  const dispatch = useDispatch();
   const { todos } = useSelector((state: RootState) => state.todo);
   const [filteredTodos, setFilteredTodos] = useState<SingleTaskProps[]>([]);
   const [filter, setFilter] = useState<
@@ -21,6 +24,23 @@ const Todo = () => {
   const closeToDoForm = () => {
     setOpenTodoForm(false);
   };
+
+  const { data: todosList, isLoading } = useQuery({
+    queryKey: ["todos"],
+    queryFn: () =>
+      fetch("https://dummyjson.com/todos").then((res) => res.json()),
+  });
+
+  useEffect(() => {
+    if (todosList) {
+      const allTodos = [...todosList.todos, ...todos];
+      dispatch(setTodos(allTodos));
+    }
+  }, [todosList]);
+
+  useEffect(() => {
+    console.log("all todos", todos);
+  }, [todos]);
 
   useEffect(() => {
     let all = 0;
@@ -57,6 +77,10 @@ const Todo = () => {
       setFilteredTodos(filteredTodos);
     }
   }, [todos, filter]);
+
+  useEffect(() => {
+    console.log("filteredTodos", filteredTodos);
+  }, [filteredTodos]);
 
   return (
     <div
@@ -121,36 +145,45 @@ const Todo = () => {
         <div className="flex items-center gap-4 justify-between sm:justify-normal w-full sm:w-auto">
           <button className="flex items-center max-w-32 sm:max-w-max text-sm text-description font-semibold gap-2 px-2 py-[6px] flex-grow border-[1px] border-description">
             <DiGitCompare size={16} className="rotate-90" />
-            <p>Filter & Sort</p>
+            <p className="text-foreground dark:text-foreground-dark">Filter & Sort</p>
           </button>
           <button
             onClick={() => setOpenTodoForm(true)}
             className="flex items-center text-sm text-description font-semibold gap-2 px-2 py-1 border-[1px] border-description"
           >
             <Plus className="w-[20px] cursor-pointer" strokeWidth={2.2} />
-            <p>New Task</p>
+            <p className="text-foreground dark:text-foreground-dark">New Task</p>
           </button>
         </div>
       </div>
       <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-y-4 gap-x-5">
         {filteredTodos.length > 0 &&
-          filteredTodos.map((todo) => (
-            <SingleTask
-              key={todo.id}
-              completed={todo.completed}
-              id={todo.id}
-              myTodo={todo.myTodo}
-              todo={todo.todo}
-              closeTodoForm={closeToDoForm}
-            />
-          ))}
+          filteredTodos.map((todo, index) => {
+            console.log(index);
+            return (
+              <SingleTask
+                key={todo.id}
+                completed={todo.completed}
+                id={todo.id}
+                myTodo={todo.myTodo}
+                todo={todo.todo}
+                closeTodoForm={closeToDoForm}
+              />
+            );
+          })}
       </div>
-      {filteredTodos.length === 0 && (
+      {filteredTodos.length === 0 && !isLoading && (
         <p className="text-center text-lg font-semibold">
           {filter === "all"
             ? "You have no todos !!"
             : `You have no ${filter} todos !!`}
         </p>
+      )}
+      {isLoading && (
+        <div  className="flex gap-2 items-center">
+          <Loader2 className="animate-spin" />
+          <p className="text-lg font-medium">Loading todos</p>
+        </div>
       )}
       {openTodoForm && <TodoForm closeTodoForm={closeToDoForm} />}
     </div>

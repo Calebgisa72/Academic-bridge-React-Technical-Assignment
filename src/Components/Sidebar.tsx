@@ -12,6 +12,7 @@ import avatar1 from "../assets/Avatar1.png";
 import avatar2 from "../assets/Avatar4.png";
 import avatar3 from "../assets/Avatar3.png";
 import React from "react";
+import logo from "../../public/Screenshot 2024-10-28 145042.png";
 import AvatarMaker from "./AvatarMaker";
 import { Link } from "react-router-dom";
 import { setviewMenuBar } from "../Redux/Reducers/appReducer";
@@ -24,7 +25,8 @@ const Sidebar = () => {
   };
   return (
     <div className="flex flex-col items-center p-5 border-r-[1px] h-full border-[#dbdbdb] bg-card dark:bg-card-dark overflow-y-auto custom-scrollbar">
-      <i className="fa-solid fa-train text-[22px] text-foreground dark:text-foreground-dark"></i>
+      <img src={logo} alt="" />
+      {/* <i className="fa-solid fa-train text-[22px] text-foreground dark:text-foreground-dark"></i> */}
       <div className="flex flex-col gap-4 items-center my-9">
         <Link to={"/home"}>
           <House

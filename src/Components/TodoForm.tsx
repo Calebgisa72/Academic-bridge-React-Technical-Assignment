@@ -86,7 +86,7 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
               value={todoTitle}
               onChange={(e) => setTodoTitle(e.target.value)}
               placeholder="Type your todo..."
-              className="w-full bg-card dark:bg-card-dark outline-none border-[1px] border-description rounded-[8px]
+              className="w-full placeholder:text-sm bg-card dark:bg-card-dark outline-none border-[1px] border-description rounded-[8px]
                h-full py-2 pr-[8px] pl-[6px]"
             />
           </label>

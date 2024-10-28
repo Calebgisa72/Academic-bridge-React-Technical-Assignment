@@ -31,7 +31,7 @@ const Layout = () => {
           className={`${
             window.innerWidth < 600
               ? "fixed inset-0 top-[67px] z-20 flex items-center justify-center bg-black bg-opacity-70 transition-opacity duration-300 ease-out"
-              : '"w-[450px] h-full"'
+              : '"w-[450px] h-full bg-card dark:bg-card-dark "'
           }`}
         >
           <RightSidebar />
