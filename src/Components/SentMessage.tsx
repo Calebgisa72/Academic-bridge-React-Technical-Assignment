@@ -1,5 +1,5 @@
-import React from "react";
-import AvatarMaker from "./AvatarMaker";
+import React from 'react';
+import AvatarMaker from './AvatarMaker';
 
 interface SenderMessageProps {
   profileImage: string;
@@ -8,12 +8,7 @@ interface SenderMessageProps {
   message: string;
 }
 
-const SentMessage = ({
-  profileImage,
-  name,
-  time,
-  message,
-}: SenderMessageProps) => {
+const SentMessage = ({ profileImage, name, time, message }: SenderMessageProps) => {
   return (
     <div className="w-full flex gap-2 justify-end">
       <div className="flex flex-col gap-1">

@@ -16,7 +16,7 @@
     "noImplicitAny": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vitest/globals", "vite/client", "jest"]
+    "types": ["vitest/globals", "vite/client", "jest", "node"]
   },
   "include": ["src"],
   "references": [

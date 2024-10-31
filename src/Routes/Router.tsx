@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import PageTitle from "../Pages/PageTitle";
-import NotFound from "./NotFound";
-import ComingSoon from "../Pages/ComingSoon";
-import Todo from "../Pages/Todo";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import PageTitle from '../Pages/PageTitle';
+import NotFound from './NotFound';
+import ComingSoon from '../Pages/ComingSoon';
+import Todo from '../Pages/Todo';
 
 const Router = () => {
   return (
@@ -14,6 +14,14 @@ const Router = () => {
           <>
             <PageTitle title="Todo" />
             <Todo />
+          </>
+        }
+      ></Route>
+      <Route
+        path="/*"
+        element={
+          <>
+            <NotFound />
           </>
         }
       ></Route>

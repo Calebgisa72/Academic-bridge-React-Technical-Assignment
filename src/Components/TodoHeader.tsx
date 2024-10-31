@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import { ChevronDown, ChevronRight, Plus } from "lucide-react";
-import { PiLineVerticalThin } from "react-icons/pi";
-import { PiLinkSimpleHorizontalBold } from "react-icons/pi";
-import { PiEqualsFill } from "react-icons/pi";
-import { CiGrid41 } from "react-icons/ci";
-import { BiLockOpen } from "react-icons/bi";
+import React from 'react';
+import { ChevronDown, ChevronRight, Plus } from 'lucide-react';
+import { PiLineVerticalThin } from 'react-icons/pi';
+import { PiLinkSimpleHorizontalBold } from 'react-icons/pi';
+import { PiEqualsFill } from 'react-icons/pi';
+import { CiGrid41 } from 'react-icons/ci';
+import { BiLockOpen } from 'react-icons/bi';
 
-import avatar1 from "../assets/Avatar1.png";
-import avatar2 from "../assets/Avatar2.png";
-import avatar3 from "../assets/Avatar3.png";
-import avatar4 from "../assets/Avatar4.png";
-import TodoForm from "./TodoForm";
+import avatar1 from '../assets/Avatar1.png';
+import avatar2 from '../assets/Avatar2.png';
+import avatar3 from '../assets/Avatar3.png';
+import avatar4 from '../assets/Avatar4.png';
 
 const allProfiles = [avatar1, avatar2, avatar3, avatar4];
 
@@ -43,30 +42,18 @@ const TodoHeader = () => {
           <div className="flex gap-2 items-center ">
             <div className="flex items-center min-w-36 gap-[5px]">
               <BiLockOpen />
-              <p className="font-medium text-sm sm:text-[15px]">
-                Limited access
-              </p>
-              <ChevronDown
-                className="w-[21px] cursor-pointer mt-[3px]"
-                strokeWidth={1.7}
-              />
+              <p className="font-medium text-sm sm:text-[15px]">Limited access</p>
+              <ChevronDown className="w-[21px] cursor-pointer mt-[3px]" strokeWidth={1.7} />
             </div>
             <PiLineVerticalThin size={26} className="text-description" />
-            <div
-              className="flex items-center gap-y-[1px]"
-              style={{ maxWidth: "200px" }}
-            >
+            <div className="flex items-center gap-y-[1px]" style={{ maxWidth: '200px' }}>
               {allProfiles.map((imageScr, index) => (
                 <div
                   key={imageScr}
                   className="relative w-[32x] h-[32px] rounded-full overflow-hidden border-[2px] border-card -ml-[6px]"
                   style={{ zIndex: index }}
                 >
-                  <img
-                    src={imageScr}
-                    alt="Team member"
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={imageScr} alt="Team member" className="w-full h-full object-cover" />
                 </div>
               ))}
               <div
@@ -78,10 +65,7 @@ const TodoHeader = () => {
               </div>
             </div>
             <div className="w-[30px] h-[30px] rounded-full bg-primary flex items-center justify-center cursor-pointer">
-              <Plus
-                className="text-white w-[17px] cursor-pointer"
-                strokeWidth={2.2}
-              />
+              <Plus className="text-white w-[17px] cursor-pointer" strokeWidth={2.2} />
             </div>
           </div>
           <div className="flex gap-4 sm:gap-1 text-primary items-center justify-center">
@@ -96,15 +80,9 @@ const TodoHeader = () => {
               </div>
             </div>
 
-            <PiLineVerticalThin
-              size={26}
-              className="text-description cursor-pointer"
-            />
+            <PiLineVerticalThin size={26} className="text-description cursor-pointer" />
             <PiEqualsFill size={26} className="cursor-pointer" />
-            <CiGrid41
-              size={20}
-              className="text-description ml-1 cursor-pointer"
-            />
+            <CiGrid41 size={20} className="text-description ml-1 cursor-pointer" />
           </div>
         </div>
       </div>

@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
-import { EllipsisVertical, Eraser, MessageCircleMore } from "lucide-react";
-import { FaRegEdit } from "react-icons/fa";
-import avatar1 from "../assets/Avatar1.png";
-import avatar2 from "../assets/Avatar4.png";
-import avatar3 from "../assets/Avatar3.png";
-import ConfirmDeletePopup from "../Popups/ConfirmDeletePopup";
-import TodoForm from "./TodoForm";
-import { toast } from "react-hot-toast";
-import { setTodos } from "../Redux/Reducers/todoReducer";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
+import React, { useState, useRef, useEffect } from 'react';
+import { EllipsisVertical, Eraser, MessageCircleMore } from 'lucide-react';
+import { FaRegEdit } from 'react-icons/fa';
+import avatar1 from '../assets/Avatar1.png';
+import avatar2 from '../assets/Avatar4.png';
+import avatar3 from '../assets/Avatar3.png';
+import ConfirmDeletePopup from '../Popups/ConfirmDeletePopup';
+import TodoForm from './TodoForm';
+import { toast } from 'react-hot-toast';
+import { setTodos } from '../Redux/Reducers/todoReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 
 const allProfiles = [avatar1, avatar2, avatar3];
 
@@ -34,9 +34,9 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
         setMenuOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -51,7 +51,7 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
   const handleDeleteTodo = (id: number | string) => {
     const updatedTodos = todos.filter((todo) => todo.id != id);
     dispatch(setTodos(updatedTodos));
-    toast.success("Todo Deleted Successfully !");
+    toast.success('Todo Deleted Successfully !');
   };
 
   return (
@@ -60,16 +60,17 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
         <div
           className={`${
             completed
-              ? "bg-completed-back text-completed"
+              ? 'bg-completed-back text-completed'
               : myTodo
-              ? "bg-toDo-back text-toDo"
-              : "bg-inProgress-back text-inProgress"
+                ? 'bg-toDo-back text-toDo'
+                : 'bg-inProgress-back text-inProgress'
           } px-[6px] py-[3px] rounded-[8px] text-sm font-semibold`}
         >
-          {completed ? "Completed" : myTodo ? "To do" : "In Progress"}
+          {completed ? 'Completed' : myTodo ? 'To do' : 'In Progress'}
         </div>
         <div className="relative">
           <EllipsisVertical
+            data-testid="actionsButton"
             onClick={() => setMenuOpen((prev) => !prev)}
             className="w-[21px] cursor-pointer"
           />
@@ -89,9 +90,7 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
                 trigger={
                   <div className="flex gap-3 border-t-[1px] pt-[5px] border-[#c3c3c3] items-center cursor-pointer">
                     <Eraser className="w-[18px] cursor-pointer text-primary" />
-                    <p className="text-foreground dark:text-foreground-dark">
-                      Delete
-                    </p>
+                    <p className="text-foreground dark:text-foreground-dark">Delete</p>
                   </div>
                 }
                 title={`Confirm deleting this todo`}
@@ -109,35 +108,23 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
         <p className="text-description text-sm">Landing Page UI</p>
       </div>
       <div className="border-t-[1px] text-description border-[#e1e1e1] dark:border-[#606060] flex items-center pt-2 justify-between">
-        <div
-          className="flex items-center gap-y-[1px]"
-          style={{ maxWidth: "200px" }}
-        >
+        <div className="flex items-center gap-y-[1px]" style={{ maxWidth: '200px' }}>
           {allProfiles.map((imageScr, index) => (
             <div
               key={imageScr}
               className="relative w-[32px] h-[32px] rounded-full overflow-hidden border-[2px] border-card -ml-[6px]"
               style={{ zIndex: index }}
             >
-              <img
-                src={imageScr}
-                alt="Team member"
-                className="w-full h-full object-cover"
-              />
+              <img src={imageScr} alt="Team member" className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
         <div className="flex gap-2 items-center">
-          <MessageCircleMore
-            className="w-[22px] cursor-pointer"
-            strokeWidth={2}
-          />
+          <MessageCircleMore className="w-[22px] cursor-pointer" strokeWidth={2} />
           <p className="font-semibold">3</p>
         </div>
       </div>
-      {isEditing && (
-        <TodoForm closeTodoForm={handleCloseTodoForm} todoId={id} />
-      )}
+      {isEditing && <TodoForm closeTodoForm={handleCloseTodoForm} todoId={id} />}
     </div>
   );
 };

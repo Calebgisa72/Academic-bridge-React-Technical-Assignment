@@ -1,5 +1,5 @@
-import React, { ReactNode, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import React, { ReactNode } from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface Props {
   to: string;
@@ -10,27 +10,17 @@ interface Props {
   // any other props that come into the component
 }
 
-export default function SideNavLink({
-  to,
-  name,
-  onClick,
-  children,
-  className = "",
-  ...props
-}: Props) {
+export default function SideNavLink({ to, onClick, children, className = '', ...props }: Props) {
   return (
-    <div
-      className={`${className} w-full h-10 flex justify-center items-center`}
-      {...props}
-    >
+    <div className={`${className} w-full h-10 flex justify-center items-center`} {...props}>
       <NavLink
         onClick={onClick}
         to={to}
         className={(navData) =>
           `transition-all group-hover:transition-all flex flex-row gap-4 ${
             navData.isActive
-              ? "font-bold w-full h-full bg-gradient-to-r items-center justify-center from-purple-200 dark:from-background-dark via-transparent to-transparent"
-              : ""
+              ? 'font-bold w-full h-full bg-gradient-to-r items-center justify-center from-purple-200 dark:from-background-dark via-transparent to-transparent'
+              : ''
           }`
         }
       >

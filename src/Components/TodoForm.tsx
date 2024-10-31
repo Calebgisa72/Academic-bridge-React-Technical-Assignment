@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { SingleTaskProps } from "./SingleTask";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../Redux/store";
-import { toast } from "react-hot-toast";
-import { setTodos } from "../Redux/Reducers/todoReducer";
+import React, { useEffect, useState } from 'react';
+import { SingleTaskProps } from './SingleTask';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
+import { toast } from 'react-hot-toast';
+import { setTodos } from '../Redux/Reducers/todoReducer';
 
 interface todoFormProps {
   closeTodoForm: () => void;
@@ -12,22 +12,20 @@ interface todoFormProps {
 
 const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
   const { todos } = useSelector((state: RootState) => state.todo);
-  const [todoTitle, setTodoTitle] = useState<string>("");
+  const [todoTitle, setTodoTitle] = useState<string>('');
   const dispatch = useDispatch();
-  const [status, setStatus] = useState<
-    "completed" | "pending" | "todo" | string
-  >("");
+  const [status, setStatus] = useState<'completed' | 'pending' | 'todo' | string>('');
   useEffect(() => {
     if (todoId) {
       const todo = todos.find((todo) => (todo.id === todoId ? true : false));
       if (todo) {
         setTodoTitle(todo.todo);
         if (todo.completed) {
-          setStatus("completed");
+          setStatus('completed');
         } else if (!todo.completed && !todo.myTodo) {
-          setStatus("pending");
+          setStatus('pending');
         } else if (todo.myTodo) {
-          setStatus("todo");
+          setStatus('todo');
         }
       }
     }
@@ -35,24 +33,24 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
 
   const handleAddTodo = () => {
     if (!todoTitle.trim()) {
-      toast.error("Todo title is required");
+      toast.error('Todo title is required');
       return;
     }
     const newTodo: SingleTaskProps = {
       id: Math.floor(Math.random() * (2000 - 250 + 1)) + 250,
       todo: todoTitle,
       completed: false,
-      myTodo: true,
+      myTodo: true
     };
     const updatedTodos = [newTodo, ...todos];
     dispatch(setTodos(updatedTodos));
-    toast.success("Todo added successfully !");
+    toast.success('Todo added successfully !');
     closeTodoForm();
   };
 
   const handleUpdateTodo = (id: string | number) => {
     if (!todoTitle.trim()) {
-      toast.error("Todo title is required");
+      toast.error('Todo title is required');
       return;
     }
 
@@ -61,8 +59,8 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
         return {
           ...todo,
           todo: todoTitle,
-          completed: status === "completed",
-          myTodo: status === "todo",
+          completed: status === 'completed',
+          myTodo: status === 'todo'
         };
       } else {
         return todo;
@@ -70,7 +68,7 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
     });
 
     dispatch(setTodos(updatedTodos));
-    toast.success("Todo updated successfully !");
+    toast.success('Todo updated successfully !');
     closeTodoForm();
   };
 
@@ -83,6 +81,7 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
             Todo:
             <input
               type="text"
+              data-testid="todoInput"
               value={todoTitle}
               onChange={(e) => setTodoTitle(e.target.value)}
               placeholder="Type your todo..."
@@ -99,6 +98,7 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
                   setStatus(e.currentTarget.value);
                 }}
                 value={status}
+                data-testid="roleSelector"
               >
                 <option value="" disabled>
                   Select Role
@@ -122,11 +122,15 @@ const TodoForm = ({ closeTodoForm, todoId }: todoFormProps) => {
               type="button"
               data-testid="accept"
               onClick={() => {
-                todoId ? handleUpdateTodo(todoId) : handleAddTodo();
+                if (todoId) {
+                  handleUpdateTodo(todoId);
+                } else {
+                  handleAddTodo();
+                }
               }}
               className="px-2 py-1 bg-primary text-white rounded hover:bg-opacity-90 transition duration-300"
             >
-              {!todoId ? "Create" : "Edit"} Todo
+              {!todoId ? 'Create' : 'Edit'} Todo
             </button>
           </div>
         </div>

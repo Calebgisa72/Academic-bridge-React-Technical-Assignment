@@ -1,15 +1,13 @@
-import React from "react";
-import Router from "./Routes/Router";
-import Sidebar from "./Components/Sidebar";
-import Navbar from "./Components/Navbar";
-import RightSidebar from "./Components/RightSidebar";
-import { useSelector } from "react-redux";
-import { RootState } from "./Redux/store";
+import React from 'react';
+import Router from './Routes/Router';
+import Sidebar from './Components/Sidebar';
+import Navbar from './Components/Navbar';
+import RightSidebar from './Components/RightSidebar';
+import { useSelector } from 'react-redux';
+import { RootState } from './Redux/store';
 
 const Layout = () => {
-  const { rightSidebar, viewMenuBar } = useSelector(
-    (state: RootState) => state.app
-  );
+  const { rightSidebar, viewMenuBar } = useSelector((state: RootState) => state.app);
   return (
     <div className="flex bg-background h-screen" data-testid="layout-component">
       {(viewMenuBar || window.innerWidth > 600) && (
