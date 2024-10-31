@@ -78,10 +78,10 @@ const Todo = () => {
       style={{ maxHeight: 'calc(100vh - 80px)' }}
     >
       <TodoHeader />
-      <div className="flex gap-5 flex-wrap sm:flex-nowrap justify-between px-4 bg-card dark:bg-card-dark rounded-[16px]">
-        <div className="pt-4 h-full">
-          <div className="flex gap-4 h-full flex-wrap sm:flex-nowrap items-center justify-between sm:justify-normal">
-            <div className="flex flex-col h-full gap-3 justify-between">
+      <div className="flex gap-5 flex-wrap py-3 sz:py-0 sm:flex-nowrap justify-between px-4 bg-card dark:bg-card-dark rounded-[16px]">
+        <div className="sz:pt-4 sz:h-full">
+          <div className="flex gap-4 h-full flex-wrap sm:flex-nowrap items-center justify-between sz:justify-normal">
+            <div className="flex flex-col sz:h-full gap-3 justify-between">
               <div
                 className={`flex text-sm gap-2 items-center font-semibold ${
                   filter === 'all' ? 'text-primary' : 'text-description'
@@ -99,17 +99,13 @@ const Todo = () => {
               </div>
               {filter === 'all' && <div className="h-1 w-full bg-primary rounded-t-full"></div>}
             </div>
-            <div className="flex flex-col h-full gap-3 justify-between">
+            <div className="flex flex-col sz:h-full gap-3 justify-between">
               <div
                 className={`flex text-sm gap-2 items-center font-semibold ${
                   filter === 'todo' ? 'text-primary' : 'text-description'
                 }`}
               >
-                <p
-                  onClick={() => setFilter('todo')}
-                  data-testid="todoButton"
-                  className="cursor-pointer"
-                >
+                <p onClick={() => setFilter('todo')} data-testid="todoButton" className="cursor-pointer">
                   To do
                 </p>
                 <div
@@ -121,17 +117,13 @@ const Todo = () => {
               </div>
               {filter === 'todo' && <div className="h-1 w-full bg-primary rounded-t-full"></div>}
             </div>
-            <div className="flex flex-col h-full gap-3 justify-between">
+            <div className="flex flex-col sz:h-full gap-3 justify-between">
               <div
                 className={`flex text-sm gap-2 items-center font-semibold ${
                   filter === 'pending' ? 'text-primary' : 'text-description'
                 }`}
               >
-                <p
-                  onClick={() => setFilter('pending')}
-                  data-testid="pendingsButton"
-                  className="cursor-pointer"
-                >
+                <p onClick={() => setFilter('pending')} data-testid="pendingsButton" className="cursor-pointer">
                   In Progress
                 </p>
                 <div
@@ -143,17 +135,13 @@ const Todo = () => {
               </div>
               {filter === 'pending' && <div className="h-1 w-full bg-primary rounded-t-full"></div>}
             </div>
-            <div className="flex flex-col h-full gap-3 justify-between">
+            <div className="flex flex-col sz:h-full gap-3 justify-between">
               <div
                 className={`flex text-sm gap-2 items-center font-semibold ${
                   filter === 'completed' ? 'text-primary' : 'text-description'
                 }`}
               >
-                <p
-                  data-testid="completedButton"
-                  onClick={() => setFilter('completed')}
-                  className="cursor-pointer"
-                >
+                <p data-testid="completedButton" onClick={() => setFilter('completed')} className="cursor-pointer">
                   Completed
                 </p>
                 <div
@@ -163,9 +151,7 @@ const Todo = () => {
                   {completed}
                 </div>
               </div>
-              {filter === 'completed' && (
-                <div className="h-1 w-full bg-primary rounded-t-full"></div>
-              )}
+              {filter === 'completed' && <div className="h-1 w-full bg-primary rounded-t-full"></div>}
             </div>
           </div>
         </div>
