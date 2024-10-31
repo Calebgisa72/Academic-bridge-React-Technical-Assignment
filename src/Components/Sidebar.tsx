@@ -17,6 +17,7 @@ import AvatarMaker from "./AvatarMaker";
 import { Link } from "react-router-dom";
 import { setviewMenuBar } from "../Redux/Reducers/appReducer";
 import { useDispatch } from "react-redux";
+import SideNavLink from "./SideNavLink";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -24,50 +25,45 @@ const Sidebar = () => {
     dispatch(setviewMenuBar(false));
   };
   return (
-    <div className="flex flex-col items-center p-5 border-r-[1px] h-full border-[#dbdbdb] bg-card dark:bg-card-dark overflow-y-auto custom-scrollbar">
+    <div className="relative flex flex-col items-center p-5 border-r-[1px] h-full border-[#dbdbdb] bg-card dark:bg-card-dark overflow-y-auto custom-scrollbar">
       <img src={logo} alt="" />
       {/* <i className="fa-solid fa-train text-[22px] text-foreground dark:text-foreground-dark"></i> */}
-      <div className="flex flex-col gap-4 items-center my-9">
-        <Link to={"/home"}>
+      <div className="absolute z-30 flex flex-col gap-1 items-center top-14 mb-10 mt-2 w-full py-3">
+        <SideNavLink onClick={handleCloseSidebar} to="/home">
           <House
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
-        </Link>
-        <Link to={"/messages"}>
+        </SideNavLink>
+        <SideNavLink onClick={handleCloseSidebar} to="/messages">
           <div className="relative">
             <Mail
-              onClick={handleCloseSidebar}
               className="text-description w-[21px] cursor-pointer"
               strokeWidth={1.7}
             />
             <div className="absolute w-2 h-2 rounded-full bg-red-600 top-[1px] right-[-1px]"></div>
           </div>
-        </Link>
-        <Link to={"/notes"}>
+        </SideNavLink>
+        <SideNavLink onClick={handleCloseSidebar} to="/notes">
           <FileText
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
-        </Link>
-        <Link to={"/"}>
+        </SideNavLink>
+        <SideNavLink onClick={handleCloseSidebar} to="/">
           <FolderMinus
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
-        </Link>
-        <Link to={"/performance"}>
+        </SideNavLink>
+        <SideNavLink onClick={handleCloseSidebar} to="/performance">
           <SquarePercent
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={1.7}
           />
-        </Link>
+        </SideNavLink>
       </div>
-      <div className="py-5 border-y-[1px] border-[#dbdbdb] flex flex-col gap-4 items-center">
+      <div className="py-5 mt-[280px] border-y-[1px] border-[#dbdbdb] flex flex-col gap-4 items-center">
         <AvatarMaker imgSrc={avatar1} active={true} />
         <AvatarMaker imgSrc={avatar2} active={true} />
         <AvatarMaker imgSrc={avatar3} />
@@ -78,21 +74,19 @@ const Sidebar = () => {
           />
         </div>
       </div>
-      <div className="mt-auto flex flex-col gap-4">
-        <Link to={"/settings"}>
+      <div className="absolute z-30 flex flex-col gap-1 items-center bottom-0 w-full py-2">
+        <SideNavLink onClick={handleCloseSidebar} to="/settings">
           <Settings
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={2}
           />
-        </Link>
-        <Link to={"/profile"}>
+        </SideNavLink>
+        <SideNavLink onClick={handleCloseSidebar} to="/profile">
           <User
-            onClick={handleCloseSidebar}
             className="text-description w-[21px] cursor-pointer"
             strokeWidth={2}
           />
-        </Link>
+        </SideNavLink>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ export default {
           DEFAULT: "#0d0d0d",
           dark: "#f5f0f0",
         },
-        primary: "#6168f3",
+        primary: "#4e43e3",
         secondary: {
           DEFAULT: "#faf1f1",
           dark: "#173558",
@@ -72,7 +72,7 @@ export default {
       screens: {
         exs: "250px",
         xsm: "470px",
-        sm: "600px",
+        sz: "600px",
         xmd: "850px",
         xlg: "1210px",
       },

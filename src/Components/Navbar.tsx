@@ -20,11 +20,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const [theme, setTheme] = useState(() => {
     const storedTheme = localStorage.getItem("theme");
-    return storedTheme
-      ? storedTheme
-      : window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return storedTheme ? storedTheme : "light";
   });
 
   useEffect(() => {
@@ -47,16 +43,14 @@ const Navbar = () => {
 
   return (
     <div className="flex py-[14px] gap-2 px-5 bg-card dark:bg-card-dark">
-      {window.innerWidth < 600 && (
-        <div
-          onClick={() => {
-            dispatch(setviewMenuBar(!viewMenuBar));
-          }}
-          className="sm:py-1 py-[2px] px-1 sm:px-2 cursor-pointer flex items-center bg-background dark:bg-background-dark rounded-[8px]"
-        >
-          <IoMenu size={25} className="text-description" />
-        </div>
-      )}
+      <div
+        onClick={() => {
+          dispatch(setviewMenuBar(!viewMenuBar));
+        }}
+        className="sm:py-1 flex sz:hidden py-[2px] px-1 sm:px-2 cursor-pointer items-center bg-background dark:bg-background-dark rounded-[8px]"
+      >
+        <IoMenu size={25} className="text-description" />
+      </div>
       <div className="w-[300px] bg-background dark:bg-background-dark h-[36x] flex px-[4px] overflow-hidden rounded-[8px]">
         <input
           type="text"
