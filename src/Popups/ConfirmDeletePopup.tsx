@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { FormPopupProps } from "../types/popupTypes";
+import React, { useState } from 'react';
+import { FormPopupProps } from '../types/popupTypes';
 
 const ConfirmDeletePopup: React.FC<FormPopupProps> = ({
   trigger,
   title,
   body,
   onSubmit,
-  submitText = "Yes",
-  closeText = "No",
+  submitText = 'Yes',
+  closeText = 'No'
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,7 +21,7 @@ const ConfirmDeletePopup: React.FC<FormPopupProps> = ({
     setIsVisible(false);
   };
 
-  const handleConfirm = (e: any) => {
+  const handleConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     if (onSubmit) onSubmit(e);
     closeFormPopup();

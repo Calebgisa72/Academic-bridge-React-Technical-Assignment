@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 interface InitialStateProps {
   search: string;
@@ -7,13 +7,13 @@ interface InitialStateProps {
 }
 
 const initialState: InitialStateProps = {
-  search: "",
+  search: '',
   rightSidebar: window.innerWidth > 600,
-  viewMenuBar: false,
+  viewMenuBar: false
 };
 
 const todoSlice = createSlice({
-  name: "app",
+  name: 'app',
   initialState,
   reducers: {
     setSearch: (state, action) => {
@@ -24,8 +24,8 @@ const todoSlice = createSlice({
     },
     setviewMenuBar: (state, action) => {
       state.viewMenuBar = action.payload;
-    },
-  },
+    }
+  }
 });
 
 export const { setSearch, setRightSidebar, setviewMenuBar } = todoSlice.actions;

@@ -1,10 +1,10 @@
-import React from "react";
-import Layout from "./Layout";
-import { Toaster } from "react-hot-toast";
-import { Provider } from "react-redux";
-import store from "./Redux/store";
-import { BrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import React from 'react';
+import Layout from './Layout';
+import { Toaster } from 'react-hot-toast';
+import { Provider } from 'react-redux';
+import store from './Redux/store';
+import { BrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
