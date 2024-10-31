@@ -12,7 +12,7 @@ import React, { useEffect, useRef } from "react";
 import ReacivedMessage from "./ReacivedMessage";
 import SentMessage from "./SentMessage";
 
-const allProfiles = [avatar1, avatar2, avatar3, avatar4, avatar5];
+const allProfiles = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
 
 const RightSidebar = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
@@ -28,46 +28,54 @@ const RightSidebar = () => {
         <h3 className="font-medium">Project Overview</h3>
         <p className="text-description text-sm cursor-pointer">See all</p>
       </div>
-      <div className="px-5 py-3 text-sm grid grid-cols-2 gap-y-2 font-medium bg-background dark:bg-background-dark rounded-[8px]">
-        <div className="flex gap-2 items-center text-description">
-          <CalendarDays className="w-[18px] cursor-pointer" strokeWidth={1.5} />
-          <p>Timeline:</p>
-        </div>
-        <p className="text-foreground dark:text-foreground-dark">
-          Apr 14 - May 7
-        </p>
+      <div className=" bg-background dark:bg-background-dark rounded-[8px] flex items-center">
+        <div className="h-[100px] w-[6px] bg-primary rounded-r-full"></div>
+        <div className="px-5 py-3 text-sm grid grid-cols-2 gap-y-2 font-medium">
+          <div className="flex gap-2 items-center text-description">
+            <CalendarDays
+              className="w-[18px] cursor-pointer"
+              strokeWidth={1.5}
+            />
+            <p>Timeline:</p>
+          </div>
+          <p className="text-foreground dark:text-foreground-dark">
+            Apr 14 - May 7
+          </p>
 
-        <div className="flex gap-2 items-center text-description">
-          <RiTeamLine size={19} />
-          <p>Team:</p>
-        </div>
-        <div
-          className="flex flex-wrap gap-y-[1px]"
-          style={{ maxWidth: "200px" }}
-        >
-          {allProfiles.map((imageScr, index) => (
-            <div
-              key={imageScr}
-              className="relative w-[30x] h-[30px] rounded-full overflow-hidden border-[2px] border-card -ml-[6px]"
-              style={{ zIndex: index }}
-            >
-              <img
-                src={imageScr}
-                alt="Team member"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
+          <div className="flex gap-2 items-center text-description">
+            <RiTeamLine size={19} />
+            <p>Team:</p>
+          </div>
+          <div
+            className="flex flex-wrap gap-y-[1px]"
+            style={{ maxWidth: "200px" }}
+          >
+            {allProfiles.map((imageScr, index) => (
+              <div
+                key={imageScr}
+                className="relative w-[32x] h-[32px] rounded-full overflow-hidden border-[2px] border-card -ml-[6px]"
+                style={{ zIndex: index }}
+              >
+                <img
+                  src={imageScr}
+                  alt="Team member"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
 
-        <div className="flex gap-2 items-center text-description">
-          <CiStar size={21} />
-          <p>Status:</p>
+          <div className="flex gap-2 items-center text-description">
+            <CiStar size={21} />
+            <p>Status:</p>
+          </div>
+          <p className="text-foreground dark:text-foreground-dark">
+            In Progress
+          </p>
         </div>
-        <p className="text-foreground dark:text-foreground-dark">In Progress</p>
       </div>
 
-      <div className="flex flex-col gap-[6px] h-full">
+      <div className="flex flex-col gap-[15px] h-full">
         <div className="flex items-center">
           <div className="flex gap-2 items-center">
             <p className="text-[15px] font-medium text-foreground dark:text-foreground-dark">
@@ -78,11 +86,10 @@ const RightSidebar = () => {
           <div className="ml-auto">
             <EllipsisVertical className="w-[21px] cursor-pointer" />
           </div>
-          <div></div>
         </div>
         <div
           ref={messagesEndRef}
-          className="h-[340px] w-full flex flex-col gap-3 rounded-[8px] overflow-y-auto custom-scrollbar pr-1"
+          className="sz:h-[300px] h-full w-full flex flex-col gap-3 rounded-[8px] overflow-y-auto custom-scrollbar pr-1"
         >
           <ReacivedMessage
             profileImage={avatar3}
@@ -115,7 +122,7 @@ const RightSidebar = () => {
             message="Ok, thanks for the tips!"
           />
         </div>
-        <div className="w-full mt-auto bg-background dark:bg-background-dark h-[36x] flex items-center px-[4px] overflow-hidden rounded-[8px]">
+        <div className="w-full mt-auto bg-background dark:bg-background-dark h-[40x] flex items-center px-[4px] overflow-hidden rounded-[8px]">
           <input
             type="text"
             placeholder="Your Message..."

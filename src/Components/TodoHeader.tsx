@@ -39,11 +39,13 @@ const TodoHeader = () => {
         </div>
       </div>
       <div>
-        <div className="flex flex-col sm:flex-row gap-2 justify-between sm:items-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-between sm:items-center">
           <div className="flex gap-2 items-center ">
             <div className="flex items-center min-w-36 gap-[5px]">
               <BiLockOpen />
-              <p className="font-medium text-sm sm:text-[15px]">Limited access</p>
+              <p className="font-medium text-sm sm:text-[15px]">
+                Limited access
+              </p>
               <ChevronDown
                 className="w-[21px] cursor-pointer mt-[3px]"
                 strokeWidth={1.7}
@@ -82,12 +84,15 @@ const TodoHeader = () => {
               />
             </div>
           </div>
-          <div className="flex gap-4 sm:gap-1  text-primary items-center">
+          <div className="flex gap-4 sm:gap-1 text-primary items-center justify-center">
             <div className="group relative cursor-pointer">
               <PiLinkSimpleHorizontalBold size={19} className="-rotate-45" />
 
-              <div className="absolute z-10 w-[85px] right-[-35px] top-[30px] hidden group-hover:flex justify-center items-center rounded-[8px] text-white text-sm bg-primary px-2 py-1">
-                Copy Link
+              <div className="absolute z-10 w-[85px] right-[-35px] top-[30px] hidden group-hover:flex flex-col items-center justify-center">
+                <div className="w-[7px] h-1 rounded-t-full bg-primary "></div>
+                <div className="flex justify-center items-center rounded-[8px] text-white text-sm bg-primary px-2 py-1">
+                  Copy Link
+                </div>
               </div>
             </div>
 

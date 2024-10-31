@@ -55,7 +55,7 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
   };
 
   return (
-    <div className="flex w-[90%] sm:w-[260px] bg-card dark:bg-card-dark rounded-[16px] p-3 flex-col gap-3">
+    <div className="flex w-[90%] sm:w-[255px] bg-card dark:bg-card-dark rounded-[16px] p-3 flex-col gap-3">
       <div className="flex justify-between">
         <div
           className={`${
@@ -64,7 +64,7 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
               : myTodo
               ? "bg-toDo-back text-toDo"
               : "bg-inProgress-back text-inProgress"
-          } px-1 rounded-[8px] text-sm font-semibold`}
+          } px-[6px] py-[3px] rounded-[8px] text-sm font-semibold`}
         >
           {completed ? "Completed" : myTodo ? "To do" : "In Progress"}
         </div>
@@ -104,11 +104,11 @@ const SingleTask = ({ id, todo, completed, myTodo }: SingleTaskProps) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 mb-3">
         <p className="font-semibold text-[17px]">{todo}</p>
         <p className="text-description text-sm">Landing Page UI</p>
       </div>
-      <div className="border-t-[1px] text-description border-[#c3c3c3] flex items-center pt-2 justify-between">
+      <div className="border-t-[1px] text-description border-[#e1e1e1] dark:border-[#606060] flex items-center pt-2 justify-between">
         <div
           className="flex items-center gap-y-[1px]"
           style={{ maxWidth: "200px" }}

@@ -10,7 +10,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write ./**/*.{js,ts,tsx,css,md,json} --config ./.prettierrc.json",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",

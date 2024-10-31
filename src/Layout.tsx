@@ -13,12 +13,7 @@ const Layout = () => {
   return (
     <div className="flex bg-background h-screen" data-testid="layout-component">
       {(viewMenuBar || window.innerWidth > 600) && (
-        <div
-          className={`${
-            window.innerWidth < 600 &&
-            "fixed inset-0 top-[67px] z-30 flex bg-black bg-opacity-70 transition-opacity duration-300 ease-out"
-          }`}
-        >
+        <div className="fixed inset-0 top-[67px] z-20 flex items-center justify-normal szjustify-center bg-black bg-opacity-70 sz:relative sz:top-0 sz:z-0 sm:bg-opacity-0 transition-opacity duration-300 ease-out">
           <Sidebar />
         </div>
       )}
@@ -27,13 +22,7 @@ const Layout = () => {
         <Router />
       </main>
       {rightSidebar && (
-        <div
-          className={`${
-            window.innerWidth < 600
-              ? "fixed inset-0 top-[67px] z-20 flex items-center justify-center bg-black bg-opacity-70 transition-opacity duration-300 ease-out"
-              : '"w-[450px] h-full bg-card dark:bg-card-dark "'
-          }`}
-        >
+        <div className="fixed inset-0 top-[67px] z-20 flex items-center justify-center bg-black bg-opacity-70 sz:relative sz:top-0 sz:z-0 sm:bg-opacity-0 sz:w-[450px] sz:h-full sz:bg-card sz:dark:bg-card-dark transition-opacity duration-300 ease-out">
           <RightSidebar />
         </div>
       )}

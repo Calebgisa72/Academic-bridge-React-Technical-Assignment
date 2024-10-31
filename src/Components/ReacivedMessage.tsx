@@ -36,8 +36,11 @@ const ReacivedMessage = ({
                 className="text-primary w-[21px] cursor-pointer"
                 strokeWidth={2}
               ></Info>
-              <div className="absolute z-10 right-[-10px] top-[-40px] hidden group-hover:flex rounded-[8px] text-white bg-primary px-2 py-1">
-                Report
+              <div className="absolute z-50 right-[-21px] top-[-40px] hidden group-hover:flex flex-col items-center justify-center">
+                <div className=" rounded-[8px] text-white bg-primary px-2 py-1">
+                  Report
+                </div>
+                <div className="w-[7px] h-1 rounded-b-full bg-primary "></div>
               </div>
             </div>
           </div>
